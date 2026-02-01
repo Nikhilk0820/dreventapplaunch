@@ -1,0 +1,31 @@
+// For information on how to create your own theme, please refer to:
+// https://ionicframework.com/docs/theming/
+
+:root {
+  --ion-font-family: "Space Grotesk", "Outfit", sans-serif;
+
+  --ion-color-primary: #2bd96b;
+  --ion-color-primary-rgb: 43, 217, 107;
+  --ion-color-primary-contrast: #06140b;
+  --ion-color-primary-contrast-rgb: 6, 20, 11;
+  --ion-color-primary-shade: #26c260;
+  --ion-color-primary-tint: #40dd78;
+
+  --ion-background-color: #0b0f0c;
+  --ion-text-color: #e3f5ea;
+  --ion-text-color-rgb: 227, 245, 234;
+  --ion-toolbar-background: rgba(11, 15, 12, 0.85);
+  --ion-toolbar-color: #e3f5ea;
+  --ion-card-background: #101613;
+  --ion-item-background: #101613;
+
+  --ion-tab-bar-background: #0b0f0c;
+  --ion-tab-bar-color: #8fa09a;
+  --ion-tab-bar-color-selected: #2bd96b;
+
+  --app-green: #2bd96b;
+  --app-green-strong: #1fbf5d;
+  --app-surface: #101613;
+  --app-surface-strong: #141c18;
+  --app-muted: #8fa09a;
+}

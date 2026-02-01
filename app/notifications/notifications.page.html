@@ -1,0 +1,31 @@
+<ion-header class="notifications-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Notifications</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="notifications-content">
+  <ion-list class="notification-list">
+    <ion-item
+      *ngFor="let item of (notifications$ | async); trackBy: trackById"
+      lines="none"
+      class="notification-item"
+      [class.unread]="!item.read"
+      [button]="true"
+      (click)="markAsRead(item)"
+    >
+      <div class="notification-row">
+        <div class="status-dot" [class.unread]="!item.read"></div>
+        <div class="notification-text">
+          <h2>{{ item.title }}</h2>
+          <p>{{ item.message }}</p>
+          <span class="time">{{ item.time }}</span>
+        </div>
+        <ion-badge *ngIf="!item.read" class="unread-badge">New</ion-badge>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,133 @@
+<ion-header [translucent]="true" class="app-header">
+  <ion-toolbar>
+    <div class="topbar">
+      <div class="header-left">
+        <img src="assets/images/enerbuff-header.png" alt="Enerbuff logo" class="header-logo" />
+        <span class="header-title">Usage Analytics</span>
+      </div>
+      <div class="header-actions">
+        <ion-button fill="clear" class="notif-button" aria-label="Notifications" (click)="onNotifications()">
+          <ion-icon name="notifications-outline"></ion-icon>
+          <ng-container *ngIf="(unreadCount$ | async) as unreadCount">
+            <ion-badge *ngIf="unreadCount > 0" class="notif-badge">{{ unreadCount }}</ion-badge>
+          </ng-container>
+        </ion-button>
+        <ion-menu-button class="menu-button"></ion-menu-button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="analytics">
+  <section class="intro">
+    <p>Track your energy consumption and DR impact</p>
+  </section>
+
+  <div class="metric-grid">
+    <ion-card class="metric-card">
+      <ion-card-content>
+        <div class="metric">
+          <ion-icon name="stats-chart-outline"></ion-icon>
+          <div>
+            <h2>55.1</h2>
+            <span>kWh total</span>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class="metric-card">
+      <ion-card-content>
+        <div class="metric">
+          <ion-icon name="trending-down-outline"></ion-icon>
+          <div>
+            <h2>17.4%</h2>
+            <span>Avg DR Reduction</span>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- <ion-segment value="usage" class="pill-segment">
+    <ion-segment-button value="usage">
+      <ion-label>Usage</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="comparison">
+      <ion-label>Comparison</ion-label>
+    </ion-segment-button>
+  </ion-segment> -->
+
+  <ion-card class="consumption-card">
+    <ion-card-content>
+      <div class="card-header">
+        <span>Energy Consumption</span>
+      </div>
+
+      <ion-segment value="daily" class="sub-segment">
+        <ion-segment-button value="daily">
+          <ion-label>Daily</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="weekly">
+          <ion-label>Weekly</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="monthly">
+          <ion-label>Monthly</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
+      <div class="bar-list">
+        <div class="bar-row">
+          <span class="day">Mon</span>
+          <div class="bar">
+            <span style="width: 82%"></span>
+          </div>
+          <span class="value">8.2 kWh (-1.2)</span>
+        </div>
+        <div class="bar-row">
+          <span class="day">Tue</span>
+          <div class="bar">
+            <span style="width: 74%"></span>
+          </div>
+          <span class="value">7.8 kWh (-0.8)</span>
+        </div>
+        <div class="bar-row">
+          <span class="day">Wed</span>
+          <div class="bar">
+            <span style="width: 88%"></span>
+          </div>
+          <span class="value">9.1 kWh (-1.5)</span>
+        </div>
+        <div class="bar-row">
+          <span class="day">Thu</span>
+          <div class="bar">
+            <span style="width: 83%"></span>
+          </div>
+          <span class="value">8.5 kWh (-1.1)</span>
+        </div>
+        <div class="bar-row">
+          <span class="day">Fri</span>
+          <div class="bar">
+            <span style="width: 70%"></span>
+          </div>
+          <span class="value">7.2 kWh (-2.2)</span>
+        </div>
+        <div class="bar-row">
+          <span class="day">Sat</span>
+          <div class="bar">
+            <span style="width: 64%"></span>
+          </div>
+          <span class="value">6.8 kWh (-1.8)</span>
+        </div>
+        <div class="bar-row">
+          <span class="day">Sun</span>
+          <div class="bar">
+            <span style="width: 72%"></span>
+          </div>
+          <span class="value">7.5 kWh (-1.0)</span>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+

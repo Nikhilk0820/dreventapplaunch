@@ -1,0 +1,125 @@
+.signin-content {
+  --background: linear-gradient(180deg, #2a7c4a 0%, #1f6a3f 32%, #0b0f0c 32%, #070a08 100%);
+}
+
+.brand-hero {
+  padding: 36px 20px 28px;
+  text-align: center;
+  color: #e9fff2;
+}
+
+.brand-logo {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 12px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-logo img {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+}
+
+.brand-hero h1 {
+  margin: 0 0 6px;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.brand-hero p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(233, 255, 242, 0.8);
+}
+
+.signin-card {
+  margin: 0 16px 20px;
+  border-radius: 18px;
+  background: rgba(16, 22, 19, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 16px 40px rgba(3, 10, 6, 0.45);
+}
+
+.signin-card h2 {
+  margin: 0 0 6px;
+  color: var(--ion-text-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.signin-sub {
+  margin: 0 0 16px;
+  text-align: center;
+  color: var(--app-muted);
+  font-size: 0.85rem;
+}
+
+.or-hint {
+  margin: -4px 0 16px;
+  text-align: left;
+  font-size: 0.78rem;
+}
+
+.or-hint span {
+  color: #6ed39a;
+  font-weight: 600;
+}
+
+.signin-item {
+  --background: rgba(255, 255, 255, 0.06);
+  --border-radius: 12px;
+  --padding-start: 12px;
+  --inner-padding-end: 12px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+}
+
+.signin-item ion-label {
+  color: var(--app-muted);
+  font-size: 0.75rem;
+}
+
+.signin-item ion-input {
+  color: var(--ion-text-color);
+}
+
+.signin-button {
+  margin-top: 8px;
+  --background: var(--app-green);
+  --color: #06140b;
+  height: 44px;
+  border-radius: 12px;
+  text-transform: none;
+  font-weight: 600;
+}
+
+.signin-button ion-icon {
+  margin-right: 6px;
+}
+
+.signin-footer {
+  margin: 14px 0 0;
+  text-align: center;
+  color: var(--app-muted);
+  font-size: 0.8rem;
+}
+
+.signin-footer span {
+  color: #6ed39a;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.forgot-link {
+  margin-top: 10px;
+}
+
+.forgot-section {
+  margin-top: 12px;
+}

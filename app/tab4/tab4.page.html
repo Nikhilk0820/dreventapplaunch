@@ -1,0 +1,108 @@
+<ion-header [translucent]="true" class="app-header">
+  <ion-toolbar>
+    <div class="topbar">
+      <div class="header-left">
+        <img src="assets/images/enerbuff-header.png" alt="Enerbuff logo" class="header-logo" />
+        <span class="header-title">Rewards</span>
+      </div>
+      <div class="header-actions">
+        <ion-button fill="clear" class="notif-button" aria-label="Notifications" (click)="onNotifications()">
+          <ion-icon name="notifications-outline"></ion-icon>
+          <ng-container *ngIf="(unreadCount$ | async) as unreadCount">
+            <ion-badge *ngIf="unreadCount > 0" class="notif-badge">{{ unreadCount }}</ion-badge>
+          </ng-container>
+        </ion-button>
+        <ion-menu-button class="menu-button"></ion-menu-button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="rewards">
+  <section class="intro">
+    <p>Redeem coins and track your progress</p>
+  </section>
+
+  <p class="state" *ngIf="loading">Loading rewards...</p>
+  <p class="state error" *ngIf="error">{{ error }}</p>
+
+  <ion-card class="wallet-card">
+    <ion-card-content>
+      <div class="wallet-row">
+        <div>
+          <div class="wallet-header">
+            <p class="label">Your Wallet</p>
+          </div>
+          <div class="balance">
+            <ion-icon name="wallet-outline"></ion-icon>
+            <span>{{ formatCoins(wallet.coins) }}</span>
+            <ion-button
+              fill="clear"
+              size="small"
+              class="wallet-refresh"
+              aria-label="Refresh wallet"
+              [disabled]="loading"
+              (click)="refreshRewards()"
+            >
+              Refresh
+            </ion-button>
+          </div>
+          <p class="sub">Ener Coins</p>
+        </div>
+        <div class="tier">
+          <ion-chip class="tier-chip" color="danger">{{ wallet.tier }} Member</ion-chip>
+          <span>Next: {{ wallet.nextTier }}</span>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <section class="levels">
+    <h2 class="section-title">Levels</h2>
+    <div class="progress-card">
+      <p class="progress-label">Progress to next level</p>
+      <div class="progress-track">
+        <span [style.width.%]="progressPercent"></span>
+      </div>
+      <p class="progress-sub">{{ formatCoins(progressRemaining) }} more coins needed for {{ wallet.nextTier }}</p>
+    </div>
+
+    <div class="level-list">
+      <div class="level-item" *ngFor="let level of levels" [ngClass]="level.status">
+        <div class="level-meta">
+          <span class="level-dot" [ngClass]="level.name.toLowerCase()"></span>
+          <div>
+            <h3>{{ level.name }}</h3>
+            <p>
+              {{ formatCoins(level.min) }} -
+              {{ level.max === null ? 'infinity' : formatCoins(level.max) }} coins
+            </p>
+          </div>
+        </div>
+        <ion-chip class="status-chip" [ngClass]="level.status">
+          {{ level.status === 'completed' ? 'Completed' : (level.status === 'current' ? 'Current' : 'Locked') }}
+        </ion-chip>
+      </div>
+    </div>
+  </section>
+
+  <section class="badges">
+    <h2 class="section-title">Badges</h2>
+    <div class="badge-list">
+      <div class="badge-item" *ngFor="let badge of badges" [ngClass]="badge.status">
+        <div class="badge-meta">
+          <ion-icon [name]="badgeIcon(badge.name)"></ion-icon>
+          <div>
+            <h3>{{ badge.name }}</h3>
+            <p>{{ badge.desc }}</p>
+          </div>
+        </div>
+        <ion-chip class="status-chip" [ngClass]="badge.status">
+          {{ badge.status === 'earned' ? 'Earned' : 'Locked' }}
+        </ion-chip>
+      </div>
+    </div>
+  </section>
+</ion-content>
+
+

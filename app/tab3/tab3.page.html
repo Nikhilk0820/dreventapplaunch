@@ -1,0 +1,166 @@
+<ion-header [translucent]="true" class="app-header">
+  <ion-toolbar>
+    <div class="events-header">
+      <div class="header-left">
+        <img
+          src="assets/images/enerbuff-header.png"
+          alt="Enerbuff logo"
+          class="header-logo"
+        />
+        <span class="header-title">Events</span>
+      </div>
+      <div class="header-actions">
+        <ion-button
+          fill="clear"
+          class="notif-button"
+          aria-label="Notifications"
+          (click)="onNotifications()"
+        >
+          <ion-icon name="notifications-outline"></ion-icon>
+          <ng-container *ngIf="(unreadCount$ | async) as unreadCount">
+            <ion-badge *ngIf="unreadCount > 0" class="notif-badge"
+              >{{ unreadCount }}</ion-badge
+            >
+          </ng-container>
+        </ion-button>
+        <ion-menu-button class="menu-button"></ion-menu-button>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="events">
+  <ion-segment
+    [value]="segmentValue"
+    class="pill-segment"
+    (ionChange)="onSegmentChange($event.detail.value)"
+  >
+    <ion-segment-button value="active">
+      <ion-label>Active Events</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="history">
+      <ion-label>History</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <section *ngIf="segmentValue === 'active'">
+    <ion-card class="event-card">
+      <ion-card-content>
+        <div class="event-head">
+          <div>
+            <h2>Evening Peak Reduction</h2>
+            <p>Help reduce grid load during peak events</p>
+          </div>
+          <ion-chip class="status-chip" [color]="eventStatusColor">{{ eventStatusText }}</ion-chip>
+        </div>
+
+        <div class="event-meta">
+          <div>
+            <ion-icon name="time-outline"></ion-icon>
+            <span>{{ eventWindowLabel }}</span>
+            <small>{{ eventDetailLabel }}</small>
+          </div>
+        </div>
+
+        <!-- <div class="progress">
+          <div class="progress-head">
+            <span>Currently Participating</span>
+            <span>15% reduced</span>
+          </div>
+          <div class="progress-bar">
+            <span style="width: 75%"></span>
+          </div>
+          <p class="progress-sub">Keep going! You're 5% away from the target.</p>
+        </div> -->
+
+        <div class="event-actions">
+          <ion-button fill="outline" color="medium">
+            <ion-icon name="notifications-outline"></ion-icon>
+            Notify Me
+          </ion-button>
+          <ion-button fill="outline">
+            <ion-icon name="calendar-outline"></ion-icon>
+            Join Now
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="event-card muted">
+      <ion-card-content>
+        <div class="event-head">
+          <div>
+            <h2>Weekend Energy Challenge</h2>
+            <p>Special weekend demand response</p>
+          </div>
+          <ion-chip class="status-chip upcoming">Upcoming</ion-chip>
+        </div>
+
+        <div class="event-meta">
+          <div>
+            <ion-icon name="time-outline"></ion-icon>
+            <span>2:00 PM - 4:00 PM</span>
+            <small>4h 15m remaining</small>
+          </div>
+        </div>
+
+        <div class="event-actions">
+          <ion-button fill="outline" color="medium" disabled="true">
+            <ion-icon name="notifications-outline"></ion-icon>
+            Notify Me
+          </ion-button>
+          <ion-button fill="outline">
+            <ion-icon name="calendar-outline"></ion-icon>
+            Join Now
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </section>
+
+  <section *ngIf="segmentValue === 'history'" class="history-section">
+    <ion-card class="history-card">
+      <ion-card-content>
+        <div class="history-head">
+          <div>
+            <h3>Morning Peak Reduction</h3>
+            <p>Reduced consumption during peak hours</p>
+          </div>
+          <ion-chip class="status-chip completed">Completed</ion-chip>
+        </div>
+        <div class="history-meta">
+          <p><span>Event Time</span> Today, 8:00 AM - 11:00 AM</p>
+        </div>
+        <div class="history-reward">
+          <ion-icon name="ribbon-outline"></ion-icon>
+          <div>
+            <h4>Coins Earned</h4>
+          </div>
+          <span class="reward-value">+250</span>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="history-card">
+      <ion-card-content>
+        <div class="history-head">
+          <div>
+            <h3>Grid Stress Response</h3>
+            <p>Emergency DR event during grid stress</p>
+          </div>
+          <ion-chip class="status-chip completed">Completed</ion-chip>
+        </div>
+        <div class="history-meta">
+          <p><span>Event Time</span> Yesterday, 7:00 PM - 8:00 PM</p>
+        </div>
+        <div class="history-reward">
+          <ion-icon name="ribbon-outline"></ion-icon>
+          <div>
+            <h4>Coins Earned</h4>
+          </div>
+          <span class="reward-value">+180</span>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </section>
+</ion-content>

@@ -1,0 +1,357 @@
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  ion-toolbar {
+    --background: rgba(11, 15, 12, 0.65);
+    --border-color: transparent;
+    backdrop-filter: blur(12px);
+  }
+
+  ion-title {
+    padding: 0;
+    font-weight: 600;
+  }
+}
+
+.events {
+  --background: radial-gradient(circle at top right, rgba(43, 217, 107, 0.18), transparent 45%),
+    radial-gradient(circle at 20% 20%, rgba(43, 217, 107, 0.12), transparent 55%),
+    linear-gradient(180deg, #0b0f0c 0%, #070a08 100%);
+}
+
+.events-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px 4px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-button,
+.notif-button {
+  position: relative;
+  --color: var(--ion-text-color);
+  --background: rgba(255, 255, 255, 0.06);
+  --border-radius: 10px;
+  --padding-start: 0;
+  --padding-end: 0;
+  height: 34px;
+  width: 34px;
+}
+
+.notif-button ion-icon {
+  font-size: 1.2rem;
+}
+
+.notif-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  --background: #ff5c5c;
+  --color: #fff;
+  font-size: 0.6rem;
+  padding: 2px 5px;
+  min-width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-text ion-title {
+  text-align: left;
+  padding: 0;
+  width: auto;
+}
+
+.header-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px;
+}
+
+
+
+
+
+.events-header p {
+  margin: 6px 0 0;
+  color: var(--app-muted);
+  font-size: 0.9rem;
+}
+
+
+
+
+
+.pill-segment {
+  margin: 12px 16px 0;
+  --background: rgba(255, 255, 255, 0.05);
+  --indicator-color: var(--app-green);
+  --border-radius: 12px;
+}
+
+.pill-segment ion-segment-button {
+  --color: var(--app-muted);
+  --color-checked: #00f374;
+  --indicator-color: var(--app-green);
+  --border-radius: 10px;
+  font-weight: 600;
+}
+
+ion-card {
+  margin: 16px;
+  border-radius: 18px;
+  background: var(--app-surface);
+  box-shadow: 0 16px 40px rgba(3, 10, 6, 0.45);
+  border: 1px solid rgba(43, 217, 107, 0.08);
+}
+
+.section-title {
+  margin: 18px 20px 6px;
+  color: var(--ion-text-color);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.event-card h2 {
+  margin: 0;
+  color: var(--ion-text-color);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.event-card p {
+  margin: 6px 0 0;
+  color: rgba(227, 245, 234, 0.7);
+  font-size: 0.85rem;
+}
+
+.event-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.status-chip {
+  --background: rgba(43, 217, 107, 0.18);
+  --color: var(--app-green);
+  height: 26px;
+  font-size: 0.75rem;
+}
+
+.status-chip.upcoming {
+  --background: rgba(143, 160, 154, 0.2);
+  --color: var(--app-muted);
+}
+
+.event-meta {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.event-meta div {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  column-gap: 8px;
+  row-gap: 4px;
+  align-items: center;
+  color: rgba(227, 245, 234, 0.8);
+  font-size: 0.85rem;
+}
+
+.event-meta ion-icon {
+  font-size: 1rem;
+  color: var(--app-green);
+}
+
+.event-meta small {
+  grid-column: 2 / 3;
+  color: rgba(227, 245, 234, 0.6);
+  font-size: 0.75rem;
+}
+
+.progress {
+  background: rgba(15, 22, 19, 0.6);
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid rgba(43, 217, 107, 0.08);
+}
+
+.progress-head {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(227, 245, 234, 0.85);
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.progress-bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #2bd96b, #16a555);
+}
+
+.progress-sub {
+  margin: 8px 0 0;
+  color: rgba(227, 245, 234, 0.6);
+  font-size: 0.75rem;
+}
+
+.event-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.event-actions ion-button {
+  --border-radius: 12px;
+  --border-width: 1.5px;
+  --border-color: rgba(227, 245, 234, 0.4);
+  --color: var(--ion-text-color);
+  text-transform: none;
+  font-size: 0.85rem;
+  height: 40px;
+}
+
+.event-actions ion-button ion-icon {
+  margin-right: 6px;
+}
+
+.event-card.muted {
+  opacity: 0.75;
+}
+
+.history-card {
+  margin-top: 12px;
+}
+
+.history-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.history-head h3 {
+  margin: 0;
+  color: var(--ion-text-color);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.history-head p {
+  margin: 6px 0 0;
+  color: rgba(227, 245, 234, 0.7);
+  font-size: 0.85rem;
+}
+
+.status-chip.completed {
+  --background: rgba(43, 217, 107, 0.18);
+  --color: var(--app-green);
+}
+
+.history-meta {
+  margin-top: 12px;
+  display: grid;
+  gap: 6px;
+  color: rgba(227, 245, 234, 0.75);
+  font-size: 0.8rem;
+}
+
+.history-meta span {
+  color: rgba(227, 245, 234, 0.55);
+  margin-right: 6px;
+}
+
+.history-reward {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(43, 217, 107, 0.12);
+  border: 1px solid rgba(43, 217, 107, 0.2);
+}
+
+.history-reward ion-icon {
+  font-size: 1.1rem;
+  color: var(--app-green);
+}
+
+.history-reward h4 {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ion-text-color);
+  font-weight: 600;
+}
+
+.history-reward p {
+  margin: 4px 0 0;
+  font-size: 0.75rem;
+  color: rgba(227, 245, 234, 0.7);
+}
+
+.reward-value {
+  font-weight: 700;
+  color: var(--app-green);
+}
+
+@media (max-width: 360px) {
+  .events-header {
+    flex-direction: column;
+  }
+
+  .event-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .history-reward {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+}
+
+
+
+
+

@@ -1,0 +1,184 @@
+<ion-header class="onboarding-header">
+  <ion-toolbar>
+    <div class="onboarding-top">
+      <ion-button fill="clear" class="back-button" aria-label="Back" (click)="goToSignin()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+      <ion-title>Onboarding</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="onboarding-content">
+  <section class="setup-header">
+    <ion-button fill="clear" class="back-button compact" aria-label="Back" (click)="goToSignin()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <h1>Setup Account</h1>
+  </section>
+
+  <ion-segment [value]="stepValue" class="step-segment" (ionChange)="onStepChange($event.detail.value)">
+    <ion-segment-button value="personal">
+      <div class="step-chip">
+        <ion-icon name="location-outline"></ion-icon>
+      </div>
+      <ion-label>Personal Details</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="electricity">
+      <div class="step-chip">
+        <ion-icon name="flash-outline"></ion-icon>
+      </div>
+      <ion-label>Electricity Account</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <section *ngIf="stepValue === 'personal'" class="form-section">
+    <ion-card class="form-card">
+      <ion-card-content>
+        <h2>Personal Details</h2>
+        <p class="form-sub">Let's start with your basic information</p>
+        <ion-item lines="none" class="form-item">
+          <ion-label position="stacked">Full Name</ion-label>
+          <ion-input placeholder="Full Name" [(ngModel)]="personal.fullName"></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="form-item">
+          <ion-label position="stacked">Email Address</ion-label>
+          <ion-input type="email" placeholder="Email Address" [(ngModel)]="personal.email"></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="form-item">
+          <ion-label position="stacked">Phone Number</ion-label>
+          <ion-input
+            type="text"
+            inputmode="numeric"
+            pattern="\\d*"
+            maxlength="10"
+            placeholder="Phone Number"
+            [(ngModel)]="personal.phone"
+            (ionInput)="onPhoneInput()"
+            (keydown)="onNumericKeydown($event)"
+          ></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="form-item">
+          <ion-label position="stacked">Address</ion-label>
+          <ion-input placeholder="Address" [(ngModel)]="personal.address"></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="form-item">
+          <ion-label position="stacked">City</ion-label>
+          <ion-input placeholder="City" [(ngModel)]="personal.city"></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="form-item">
+          <ion-label position="stacked">Pincode</ion-label>
+          <ion-input
+            type="text"
+            inputmode="numeric"
+            pattern="\\d*"
+            maxlength="6"
+            placeholder="Pincode"
+            [(ngModel)]="personal.pincode"
+            (ionInput)="onPincodeInput()"
+            (keydown)="onNumericKeydown($event)"
+          ></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="showPersonalErrors && !personal.fullName.trim()">
+          Please enter your full name.
+        </ion-text>
+        <ion-text color="danger" *ngIf="showPersonalErrors && !personal.email.trim()">
+          Please enter your email address.
+        </ion-text>
+        <ion-text color="danger" *ngIf="showPersonalErrors && personal.email.trim() && !isEmailValid()">
+          Please enter a valid email address.
+        </ion-text>
+        <ion-text color="danger" *ngIf="showPersonalErrors && !personal.phone.trim()">
+          Please enter your phone number.
+        </ion-text>
+        <ion-text color="danger" *ngIf="showPersonalErrors && personal.phone.trim() && !isPhoneValid()">
+          Phone number must be 10 digits.
+        </ion-text>
+        <ion-text color="danger" *ngIf="showPersonalErrors && !personal.address.trim()">
+          Please enter your address.
+        </ion-text>
+        <ion-text color="danger" *ngIf="showPersonalErrors && !personal.city.trim()">
+          Please enter your city.
+        </ion-text>
+        <ion-text color="danger" *ngIf="showPersonalErrors && !personal.pincode.trim()">
+          Please enter your pincode.
+        </ion-text>
+        <ion-text color="danger" *ngIf="showPersonalErrors && personal.pincode.trim() && !isPincodeValid()">
+          Pincode must be 6 digits.
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button expand="block" class="continue-button" (click)="goToElectricity()">
+      Continue
+    </ion-button>
+  </section>
+
+  <section *ngIf="stepValue === 'electricity'" class="form-section">
+    <ion-card class="form-card">
+      <ion-card-content>
+        <h2>Electricity Account</h2>
+        <p class="form-sub">Connect your electricity account for personalized insights</p>
+        <ion-item lines="none" class="form-item">
+          <ion-label position="stacked">Consumer ID</ion-label>
+          <ion-input
+            type="text"
+            inputmode="numeric"
+            pattern="\\d*"
+            placeholder="Consumer ID"
+            [(ngModel)]="electricity.consumerId"
+            (ionInput)="onConsumerIdInput()"
+            (keydown)="onNumericKeydown($event)"
+          ></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="form-item">
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input
+            type="password"
+            placeholder="Password"
+            [(ngModel)]="electricity.password"
+          ></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="form-item">
+          <ion-label position="stacked">Confirm Password</ion-label>
+          <ion-input
+            type="password"
+            placeholder="Confirm Password"
+            [(ngModel)]="electricity.confirmPassword"
+          ></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="showElectricityErrors && !hasConsumerId()">
+          Please enter your consumer ID.
+        </ion-text>
+        <ion-text color="danger" *ngIf="showElectricityErrors && !electricity.password.trim()">
+          Please enter your password.
+        </ion-text>
+        <ion-text color="danger" *ngIf="showElectricityErrors && !electricity.confirmPassword.trim()">
+          Please confirm your password.
+        </ion-text>
+        <ion-text
+          color="danger"
+          *ngIf="
+            showElectricityErrors &&
+            electricity.password.trim() &&
+            electricity.confirmPassword.trim() &&
+            !isPasswordMatch()
+          "
+        >
+          Passwords do not match.
+        </ion-text>
+        <ion-text color="danger" *ngIf="signupError">
+          {{ signupError }}
+        </ion-text>
+        <div class="info-note">
+          <ion-icon name="flash-outline"></ion-icon>
+          <p>We will use this info to fetch real-time usage and optimize recommendations.</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button expand="block" class="continue-button" [disabled]="isSubmitting" (click)="signup()">
+      Signup
+    </ion-button>
+  </section>
+</ion-content>

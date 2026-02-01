@@ -1,0 +1,161 @@
+.onboarding-header {
+  ion-toolbar {
+    --background: rgba(11, 15, 12, 0.8);
+    --border-color: transparent;
+  }
+}
+
+.onboarding-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+}
+
+.back-button {
+  --color: var(--ion-text-color);
+  --background: transparent;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+.back-button.compact {
+  height: 32px;
+  width: 32px;
+}
+
+.onboarding-content {
+  --background: radial-gradient(circle at top right, rgba(43, 217, 107, 0.18), transparent 45%),
+    radial-gradient(circle at 20% 20%, rgba(43, 217, 107, 0.12), transparent 55%),
+    linear-gradient(180deg, #0b0f0c 0%, #070a08 100%);
+}
+
+.setup-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 18px 8px;
+}
+
+.setup-header h1 {
+  margin: 0;
+  color: var(--ion-text-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.step-segment {
+  margin: 8px 1px 16px;
+  --background: transparent;
+  --indicator-color: var(--app-green);
+  --indicator-height: 3px;
+  --border-radius: 0;
+}
+
+.step-segment ion-segment-button {
+  --color: var(--app-muted);
+  --color-checked: var(--ion-text-color);
+  --indicator-color: var(--app-green);
+  --indicator-height: 3px;
+  --background-checked: transparent;
+  text-transform: none;
+}
+
+.step-segment ion-label {
+  font-size: 0.7rem;
+  margin-top: 6px;
+}
+
+.step-chip {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ion-text-color);
+}
+
+.step-segment ion-segment-button.segment-button-checked .step-chip {
+  background: rgba(43, 217, 107, 0.2);
+  color: var(--app-green);
+}
+
+.form-section {
+  padding: 0 8px 24px;
+}
+
+.form-card {
+  margin: 0 16px 18px;
+  border-radius: 18px;
+  background: rgba(16, 22, 19, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 16px 40px rgba(3, 10, 6, 0.45);
+}
+
+.form-card h2 {
+  margin: 0 0 6px;
+  color: var(--ion-text-color);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.form-sub {
+  margin: 0 0 12px;
+  color: var(--app-muted);
+  font-size: 0.85rem;
+}
+
+.form-item {
+  --background: rgba(255, 255, 255, 0.06);
+  --border-radius: 12px;
+  --padding-start: 12px;
+  --inner-padding-end: 12px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+}
+
+.form-item ion-label {
+  color: var(--app-muted);
+  font-size: 0.75rem;
+}
+
+.form-item ion-input {
+  color: var(--ion-text-color);
+}
+
+.info-note {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(43, 217, 107, 0.12);
+  border: 1px solid rgba(43, 217, 107, 0.2);
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  color: rgba(227, 245, 234, 0.8);
+  font-size: 0.8rem;
+}
+
+.info-note ion-icon {
+  color: var(--app-green);
+  font-size: 1rem;
+  margin-top: 2px;
+}
+
+.continue-button {
+  margin: 0 16px;
+  --background: var(--app-green);
+  --color: #06140b;
+  font-weight: 600;
+  text-transform: none;
+  height: 44px;
+  border-radius: 12px;
+}
+
+@media (max-width: 360px) {
+  .step-segment ion-label {
+    font-size: 0.65rem;
+  }
+}

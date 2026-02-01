@@ -1,0 +1,89 @@
+<ion-content [fullscreen]="true" class="signin-content">
+  <section class="brand-hero">
+    <div class="brand-logo">
+      <img src="assets/images/enerbuff-header.png" alt="Enerbuff logo" />
+    </div>
+    <h1>Enerbuff</h1>
+    <p>Power your savings, empower the grid</p>
+  </section>
+
+  <ion-card class="signin-card">
+    <ion-card-content>
+      <h2>Welcome Back</h2>
+      <p class="signin-sub">Sign in to start participating in demand response events</p>
+
+      <ion-item lines="none" class="signin-item">
+        <ion-label position="stacked">Phone Number or Consumer Number</ion-label>
+        <ion-input
+          type="text"
+          inputmode="numeric"
+          pattern="\\d*"
+          maxlength="20"
+          placeholder="Enter your phone number/consumer no."
+          [(ngModel)]="identifier"
+          (ionInput)="onIdentifierInput()"
+          (keydown)="onNumericKeydown($event)"
+        ></ion-input>
+      </ion-item>
+      <p class="signin-sub or-hint">Enter your phone number <span>or</span> your consumer number, then your password.</p>
+
+      <ion-item lines="none" class="signin-item">
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input
+          type="password"
+          placeholder="Enter your password"
+          [(ngModel)]="password"
+        ></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="loginError">
+        {{ loginError }}
+      </ion-text>
+
+      <ion-button expand="block" class="signin-button" [disabled]="isSubmitting" (click)="login()">
+        <ion-icon name="person-outline"></ion-icon>
+        Sign in
+      </ion-button>
+
+      <p class="signin-footer forgot-link">
+        <span role="button" tabindex="0" (click)="toggleForgot()">
+          Forgot password?
+        </span>
+      </p>
+
+      <section *ngIf="showForgot" class="forgot-section">
+        <ion-item lines="none" class="signin-item">
+          <ion-label position="stacked">Phone Number or Consumer Number</ion-label>
+          <ion-input
+            type="text"
+            inputmode="numeric"
+            pattern="\\d*"
+            maxlength="20"
+            placeholder="Enter your phone number/consumer no."
+            [(ngModel)]="forgotIdentifier"
+            (ionInput)="onForgotIdentifierInput()"
+            (keydown)="onNumericKeydown($event)"
+          ></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="signin-item">
+          <ion-label position="stacked">New Password</ion-label>
+          <ion-input
+            type="password"
+            placeholder="Enter your new password"
+            [(ngModel)]="newPassword"
+          ></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="forgotError">
+          {{ forgotError }}
+        </ion-text>
+        <ion-button expand="block" class="signin-button" [disabled]="isSubmitting" (click)="updatePassword()">
+          Update Password
+        </ion-button>
+      </section>
+
+      <p class="signin-footer">
+        Do not have an account?
+        <span role="button" tabindex="0" (click)="onSignup()">Sign up</span>
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
